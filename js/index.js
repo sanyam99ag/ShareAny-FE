@@ -115,7 +115,7 @@ const uploadFile = () => {
     xhr.setRequestHeader('Allow-Origin', '*');
     xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT DELETE');
     xhr.setRequestHeader('Access-Control-Allow-Methods', 'Content-type, X-Auth-Token, Origin, Authorization');
-    xhr.withCredentials = true;
+    // xhr.withCredentials = true;
 
     xhr.send(formData);
 };
