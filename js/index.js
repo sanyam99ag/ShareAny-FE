@@ -110,6 +110,13 @@ const uploadFile = () => {
     };
 
     xhr.open("POST", uploadURL);
+    // xhr.setRequestHeader('X-PINGOTHER', 'pingpong');
+    // xhr.setRequestHeader('Content-Type', 'text/xml');
+    xhr.setRequestHeader('Allow-Origin', '*');
+    xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT DELETE');
+    xhr.setRequestHeader('Access-Control-Allow-Methods', 'Content-type, X-Auth-Token, Origin, Authorization');
+    xhr.withCredentials = true;
+
     xhr.send(formData);
 };
 
