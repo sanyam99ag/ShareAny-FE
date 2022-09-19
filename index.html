@@ -11,18 +11,19 @@
 
 <body>
 
-    <img src="./img/logo.gif" alt="ShareAny logo" class="logo">
-
+    <a href="http://shareany.herokuapp.com">
+        <img src="./img/logo.gif" alt="ShareAny logo" class="logo">
+    </a>
     <section class="upload-container">
-        <form action="">
-            <div class="drop-zone">
+        <form id="fileUploadForm" action="">
+            <div id="browseBtn" class="drop-zone">
                 <div class="icon-container">
                     <img src="./img/file.png" draggable="false" class="center" alt="File Icon">
                     <img src="./img/file.png" draggable="false" class="left" alt="File Icon">
                     <img src="./img/file.png" draggable="false" class="right" alt="File Icon">
                 </div>
                 <input type="file" id="fileInput">
-                <div class="title">Drop your Files here or, <span id="browseBtn">Browse</span></div>
+                <div class="title">Drop your Files here or, Click to Browse.</div>
             </div>
         </form>
 
@@ -42,6 +43,9 @@
         <div class="sharing-container">
             <p class="expire">Link expires in 24 hrs</p>
 
+            <div class="qrcode-container">
+                <canvas id="qrcode" class="qrcode"></canvas>
+            </div>
 
             <div class="input-container">
                 <input type="text" id="fileURL" readonly>
@@ -85,6 +89,9 @@
             </path>
         </svg>
     </a>
+
+    <script src="./js/qrious.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script> -->
     <script src="./js/index.js"></script>
 </body>
 

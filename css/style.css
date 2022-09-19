@@ -105,12 +105,13 @@ body,
 }
 
 .title {
-    font-size: large;
+    font-size: inherit;
 }
 
 #browseBtn {
     color: #2196f3;
     cursor: pointer;
+    color: inherit;
 }
 
 
@@ -167,6 +168,7 @@ body,
     margin-bottom: 25px;
     width: var(--container-width);
     border-radius: 10px;
+    margin: 30px;
     display: none;
 }
 
@@ -178,6 +180,21 @@ body,
     font-size: 16px;
     opacity: 0.7;
     margin-top: 0;
+}
+
+.qrcode-container {
+    text-align: center;
+}
+
+.qrcode-container .qrcode {
+    padding: 1px;
+    border: 14px solid white;
+    border-radius: 10px;
+}
+
+.qrcode-container .qrcode img {
+    border: 3px solid red;
+    margin: 0 auto;
 }
 
 .sharing-container .input-container {

@@ -12,7 +12,9 @@ const status = document.querySelector(".status");
 const sharingContainer = document.querySelector(".sharing-container");
 const copyURLBtn = document.querySelector("#copyURLBtn");
 const fileURL = document.querySelector("#fileURL");
+const qr = document.querySelector(".qrcode");
 const emailForm = document.querySelector("#emailForm");
+const fileUploadForm = document.querySelector("#fileUploadForm");
 
 const toast = document.querySelector(".toast");
 
@@ -71,8 +73,6 @@ fileInput.addEventListener("change", () => {
     uploadFile();
 });
 
-
-
 const uploadFile = () => {
     console.log("file added uploading");
 
@@ -98,8 +98,10 @@ const uploadFile = () => {
 
     // handle error
     xhr.upload.onerror = function() {
-        showToast(`Error in upload: ${xhr.status}%.`);
+        showToast(`Error in upload, Try again.`);
         fileInput.value = ""; // reset the input
+        fileUploadForm.style.display = "block"; // Unhide the drop zone box
+
     };
 
     // listen for response which will give the link
@@ -125,12 +127,21 @@ const onFileUploadSuccess = (res) => {
     emailForm[2].removeAttribute("disabled");
     emailForm[2].innerText = "Send";
     progressContainer.style.display = "none"; // hide the progress container box
-    // dropZone.style.display = "none"; // hide the drop zone box
+    fileUploadForm.style.display = "none"; // hide the drop zone box
 
     const { file: url } = JSON.parse(res);
     console.log(url);
     sharingContainer.style.display = "block";
+
+    // Generate QR Code
+    generateQRCode(url);
+
     fileURL.value = url;
+};
+
+// Generate QR code
+const generateQRCode = (url) => {
+    var qrcode = new QRious({ element: document.getElementById("qrcode"), value: url });
 };
 
 // sharing container listenrs
@@ -142,6 +153,7 @@ copyURLBtn.addEventListener("click", () => {
 
 fileURL.addEventListener("click", () => {
     fileURL.select();
+    document.execCommand("copy");
     showToast("Copied to clipboard");
 });
 
